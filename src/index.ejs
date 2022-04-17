@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SystemJS Named Register Bug Repro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="importmap-type" content="systemjs-importmap">
+    <%= htmlWebpackPlugin.tags.headTags %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@openmrs/esm-app-shell-cypress-fixtures": "http://localhost:9081/@openmrs/esm-app-shell-cypress-fixtures.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <%= htmlWebpackPlugin.tags.bodyTags %>
+    <div>Loading...</div>
+    <script>
+      initializeSpa();
+    </script>
+  </body>
+</html>
