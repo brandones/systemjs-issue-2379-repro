@@ -1,8 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { container } = require("webpack");
 const { resolve } = require("path");
-const { name, dependencies } = require("./package.json");
-const { ModuleFederationPlugin } = container;
 
 module.exports = (env, argv = {}) => {
   const outDir = "dist";
@@ -13,15 +11,11 @@ module.exports = (env, argv = {}) => {
       filename: "bug.js",
       chunkFilename: "[chunkhash].js",
       path: resolve(__dirname, outDir),
-      // publicPath: "/bug",
     },
     target: "web",
     devServer: {
       compress: true,
-      open: ["bug/test"],
-      // devMiddleware: {
-      //   publicPath: "bug",
-      // },
+      open: ["/"],
       historyApiFallback: true
     },
     mode: "development",
@@ -64,36 +58,8 @@ module.exports = (env, argv = {}) => {
       new HtmlWebpackPlugin({
         inject: false,
         scriptLoading: "blocking",
-        // publicPath: "bug",
         template: resolve(__dirname, "src/index.ejs"),
-        // templateParameters: {
-        //   openmrsApiUrl,
-        //   openmrsPublicPath,
-        //   openmrsFavicon,
-        //   openmrsPageTitle,
-        //   openmrsImportmapDef,
-        //   openmrsImportmapUrl,
-        //   openmrsOffline,
-        //   openmrsEnvironment,
-        //   openmrsConfigUrls,
-        //   openmrsCoreImportmap:
-        //     appPatterns.length > 0 && JSON.stringify(coreImportmap),
-        // },
       }),
-      // new ModuleFederationPlugin({
-      //   name,
-      //   shared: sharedDependencies.reduce((obj, depName) => {
-      //     obj[depName] = {
-      //       requiredVersion: dependencies[depName] ?? false,
-      //       singleton: true,
-      //       eager: true,
-      //       import: depName,
-      //       shareKey: depName,
-      //       shareScope: "default",
-      //     };
-      //     return obj;
-      //   }, {}),
-      // }),
     ]
   };
 };
