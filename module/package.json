@@ -9,6 +9,7 @@
     "build": "webpack build"
   },
   "devDependencies": {
+    "@swc/core": "^1.2.172",
     "swc-loader": "^0.2.0",
     "systemjs-webpack-interop": "^2.3.7",
     "webpack": "^5.72.0",
