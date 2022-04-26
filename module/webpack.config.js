@@ -7,7 +7,7 @@ const { name } = require(path.resolve(
 
 module.exports = {
   entry: {
-    [name]: "systemjs-webpack-interop/auto-public-path",
+    [name]: path.resolve(__dirname, 'src/helloWorldPage.tsx'),
   },
   output: {
     filename: '[name].js',
